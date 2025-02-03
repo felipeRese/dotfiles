@@ -7,6 +7,37 @@ vim.g.mapleader = " "
 vim.wo.relativenumber = true
 vim.opt.number = true
 
+if vim.g.neovide then
+  vim.opt.guifont = "JetBrainsMono Nerd Font:h10"
+  vim.g.remember_window_size = true
+  vim.g.remember_window_position = true
+  vim.g.neovide_hide_mouse_when_typing = true
+  vim.keymap.set({ "n", "x" }, "<C-S-C>", '"+y', { desc = "Copy system clipboard" })
+  vim.keymap.set({ "n", "x" }, "<C-S-V>", '"+p', { desc = "Paste system clipboard" })
+  vim.g.neovide_fullscreen = true
+
+  local function toggle_transparency()
+    if vim.g.neovide_transparency == 1.0 then
+      vim.cmd "let g:neovide_transparency=0.5"
+    else
+      vim.cmd "let g:neovide_transparency=1.0"
+    end
+  end
+
+  local function toggle_fullscreen()
+    if vim.g.neovide_fullscreen == false then
+      vim.cmd "let g:neovide_fullscreen=v:true"
+    else
+      vim.cmd "let g:neovide_fullscreen=v:false"
+    end
+  end
+
+  vim.keymap.set("n", "<F11>", toggle_fullscreen, { silent = true })
+  vim.keymap.set("n", "<F10>", toggle_transparency, { silent = true })
+end
+
+vim.keymap.set('n', '<leader>cc', ':CopilotChatToggle<CR>', { noremap = true, silent = true })
+
 local opt = vim.opt
 
 -- Split to the right by default

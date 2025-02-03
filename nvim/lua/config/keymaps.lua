@@ -16,10 +16,8 @@ keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" }
 -- Debugging keymaps
 keymap.set("n", "<leader>db", "<cmd>DapToggleBreakpoint<CR>", { desc = "Add breakpoint at line" })
 keymap.set("n", "<leader>dus", function()
-  local widgets = require("dap.ui.widgets")
-  local sidebar = widgets.sidebar(widgets.scopes)
-  sidebar.open()
-end, { desc = "Open debugging sidebar" })
+  require("dapui").toggle()
+end, { desc = "Open debugging ui" })
 
 keymap.set("n", "<leader>dgt", function()
   require("dap-go").debug_test()

@@ -34,6 +34,20 @@ return {
             luasnip.lsp_expand(args.body)
           end,
         },
+        window = {
+          completion = cmp.config.window.bordered({
+            winhighlight = "Normal:Normal,FloatBorder:Normal,CursorLine:Visual,Search:None",
+            col_offset = -3,
+            side_padding = 0,
+            border = "rounded",
+          }),
+          documentation = cmp.config.window.bordered({
+            winhighlight = "Normal:Normal,FloatBorder:Normal,CursorLine:Visual,Search:None",
+            col_offset = -3,
+            side_padding = 0,
+            border = "rounded",
+          }),
+        },
         mapping = cmp.mapping.preset.insert({
           ["<C-k>"] = cmp.mapping.select_prev_item(), -- previous suggestion
           ["<C-j>"] = cmp.mapping.select_next_item(), -- next suggestion

@@ -7,13 +7,14 @@ vim.g.mapleader = " "
 vim.wo.relativenumber = true
 vim.opt.number = true
 
+vim.keymap.set({ "n", "x" }, "<C-S-C>", '"+y', { desc = "Copy system clipboard" })
+vim.keymap.set({ "n", "x" }, "<C-S-V>", '"+p', { desc = "Paste system clipboard" })
+
 if vim.g.neovide then
-  vim.opt.guifont = "JetBrainsMono Nerd Font:h10"
+  vim.opt.guifont = "JetBrainsMono Nerd Font:h9"
   vim.g.remember_window_size = true
   vim.g.remember_window_position = true
   vim.g.neovide_hide_mouse_when_typing = true
-  vim.keymap.set({ "n", "x" }, "<C-S-C>", '"+y', { desc = "Copy system clipboard" })
-  vim.keymap.set({ "n", "x" }, "<C-S-V>", '"+p', { desc = "Paste system clipboard" })
   vim.g.neovide_fullscreen = true
 
   local function toggle_transparency()
@@ -58,6 +59,9 @@ opt.swapfile = false
 
 -- Fill empty lines in buffer with spaces
 opt.fillchars = { eob = " " }
+
+-- Enable snippet support
+require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/lua/snippets" })
 
 -- System clipboard
 vim.opt.clipboard:append("unnamedplus")

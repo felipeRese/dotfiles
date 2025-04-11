@@ -35,6 +35,7 @@ return {
           "emmet_ls",
           "prismals",
           "pyright",
+          "clangd",
         },
 
         automatic_installation = true
